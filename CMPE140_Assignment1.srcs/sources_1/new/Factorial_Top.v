@@ -23,4 +23,7 @@
 module Factorial_Top(
 
     );
+    
+    Factorial_DP DP ();
+    Factorial_CU CU ();
 endmodule

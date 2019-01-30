@@ -23,4 +23,10 @@
 module Factorial_DP(
 
     );
+    
+    CMP_GT COMP ();
+    CNT Counter ();
+    MUL MUL();
+    MUX2 MUX2 ();
+    REG REG ();
 endmodule

@@ -23,4 +23,7 @@
 module Factorial_FPGA(
 
     );
+    
+    
+    Factorial_Top Top ();
 endmodule
