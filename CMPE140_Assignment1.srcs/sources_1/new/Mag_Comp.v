@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module CMP_GT #(parameter Data_Width = 12)(
+module CMP_GT #(parameter Data_Width = 4)(
     input [Data_Width - 1:0] A, B,
     output reg GT);
     

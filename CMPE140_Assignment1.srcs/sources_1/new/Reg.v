@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module REG #(parameter Data_Width = 12)(
+module REG #(parameter Data_Width = 32)(
     input [Data_Width - 1:0] D,
-    input clk, Load_Reg,
+    input Clk, Load_Reg,
     output reg [Data_Width - 1:0] Q
 );
 
-    always @ (posedge clk)
+    always @ (posedge Clk)
         begin
            if (Load_Reg)
                 Q <= D; 

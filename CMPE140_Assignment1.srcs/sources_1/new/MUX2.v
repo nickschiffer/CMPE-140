@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX2 #(parameter Data_Width = 12)(
+module MUX2 #(parameter Data_Width = 32)(
     input [Data_Width - 1:0] D0, D1,
     input Sel,
     output reg [Data_Width - 1:0] Out

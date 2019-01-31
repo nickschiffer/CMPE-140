@@ -20,9 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUL #(parameter Data_Width = 12)(
+module MUL #(parameter Data_Width = 32)(
     input [Data_Width - 1:0] x, y,
-    output reg [2 * Data_Width - 1:0] z
+    output reg [Data_Width - 1:0] z
 );
 
     always @ (x or y)
