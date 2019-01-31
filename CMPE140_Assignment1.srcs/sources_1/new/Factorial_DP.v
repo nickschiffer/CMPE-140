@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Factorial_DP #(Data_Width = 32)(
+module Factorial_DP #(parameter Data_Width = 32)(
     input [Data_Width - 1:0] n,
     input Clk, En, Sel, Load_Reg, Load_Cnt, OE,
     output [Data_Width - 1:0] nf,
