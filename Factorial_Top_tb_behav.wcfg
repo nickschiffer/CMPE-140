@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1000000001fs"></ZoomEndTime>
+      <ZoomEndTime time="1021538463fs"></ZoomEndTime>
       <Cursor1Time time="308065000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+      <ValueColumnWidth column_width="112"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="36" />
    <wvobject fp_name="/Factorial_Top_tb/Go_tb" type="logic">
@@ -41,8 +41,9 @@
       <obj_property name="ObjectShortName">Err_tb</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/nf_tb" type="array">
-      <obj_property name="ElementShortName">nf_tb[3:0]</obj_property>
-      <obj_property name="ObjectShortName">nf_tb[3:0]</obj_property>
+      <obj_property name="ElementShortName">nf_tb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nf_tb[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/CU/GT_Input" type="logic">
       <obj_property name="ElementShortName">GT_Input</obj_property>
@@ -124,7 +125,6 @@
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/D" type="array">
       <obj_property name="ElementShortName">D[3:0]</obj_property>
       <obj_property name="ObjectShortName">D[3:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/D" type="array">
       <obj_property name="ElementShortName">D[3:0]</obj_property>

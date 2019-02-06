@@ -23,9 +23,10 @@
  module CNT #(parameter Data_Width = 4)(
     input [Data_Width - 1:0] D,
     input Load_Cnt, En, Clk,
-    output reg [Data_Width - 1:0] Q
+    output reg [Data_Width - 1:0] Q 
 );    
-
+    
+    
     always @ (posedge Clk)
     begin
         if (En)
