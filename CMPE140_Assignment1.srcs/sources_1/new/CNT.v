@@ -26,7 +26,7 @@
     output reg [Data_Width - 1:0] Q
 );    
 
-    always @ (En, Load_Cnt, posedge Clk)
+    always @ (posedge Clk)
     begin
         if (En)
         begin
