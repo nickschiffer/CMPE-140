@@ -35,8 +35,7 @@
                 Q <= D;
             else
             begin
-                if (Q != 0)
-                    Q <= Q - 1'b1;
+                Q <= Q - 1'b1;
             end
         end
     end
