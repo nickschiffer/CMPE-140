@@ -26,7 +26,7 @@ module Factorial_Top_tb;
 reg Go_tb, clk_tb;
 reg [3:0] n_tb;
 wire Done_tb, Err_tb;
-wire [3:0] nf_tb;
+wire [31:0] nf_tb;
 
 Factorial_Top DUT (
     .n(n_tb),
@@ -52,6 +52,8 @@ begin
     $display("Factorial Top Test Begin");
     Go_tb = 0;
     tick;
+    tick;
+    tick;
     Go_tb  = 1;
     clk_tb = 0;
     n_tb = 4'd5;
@@ -61,6 +63,10 @@ begin
     tick;
     tick;
     tick;
+    tick;
+    tick;
+    tick;
+    
     while (!(Done_tb || Err_tb))
     begin
         tick;

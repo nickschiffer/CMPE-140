@@ -26,6 +26,8 @@ module CMP_GT #(parameter Data_Width = 4)(
     
     always @ (A or B)
         begin
+        
+           // GT = (A > B) ? 1'b1 : 1'b0;
             GT <= 1'b0;
             
             if (A > B)

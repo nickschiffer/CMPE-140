@@ -24,7 +24,7 @@ module Factorial_Top(
     input Go, clk,
     input [3:0] n,
     output Done, Err,
-    output [3:0] nf
+    output [31:0] nf
     );
     
     wire Sel, Load_Reg, Load_Cnt, OE, En;
