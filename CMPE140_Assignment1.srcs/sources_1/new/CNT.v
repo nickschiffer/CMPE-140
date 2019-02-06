@@ -23,21 +23,20 @@
  module CNT #(parameter Data_Width = 4)(
     input [Data_Width - 1:0] D,
     input Load_Cnt, En, Clk,
-    output reg Q
+    output reg [Data_Width - 1:0] Q
 );    
 
-    always @ (En, Load_Cnt, Clk)
+    always @ (En, Load_Cnt, posedge Clk)
     begin
         if (En)
         begin
             if (Load_Cnt)
                 Q <= D;
             else
-            begin 
-                Q = Q - 1;
+            begin
+                if (Q != 0)
+                    Q <= Q - 1'b1;
             end
         end
-        else
-            Q <= Q;
     end
 endmodule

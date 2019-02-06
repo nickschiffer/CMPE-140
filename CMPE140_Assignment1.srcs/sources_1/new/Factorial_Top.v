@@ -21,9 +21,40 @@
 
 
 module Factorial_Top(
-
+    input Go, clk,
+    input [3:0] n,
+    output Done, Err,
+    output [3:0] nf
     );
     
-    Factorial_DP DP ();
-    Factorial_CU CU ();
+    wire Sel, Load_Reg, Load_Cnt, OE, En;
+    wire GT_Fact, GT_Input;
+    
+    
+    Factorial_DP DP (
+        .Clk(clk),
+        .En(En),
+        .n(n),
+        .Sel(Sel),
+        .Load_Reg(Load_Reg),
+        .Load_Cnt(Load_Cnt),
+        .OE(OE),
+        .GT_Fact(GT_Fact),
+        .GT_Input(GT_Input),
+        .nf(nf)
+    );
+    
+    Factorial_CU CU (
+        .En(En),
+        .go(Go),
+        .clk(clk),
+        .Sel(Sel),
+        .Load_Reg(Load_Reg),
+        .Load_Cnt(Load_Cnt),
+        .OE(OE),
+        .GT_Fact(GT_Fact),
+        .GT_Input(GT_Input),
+        .Done(Done),
+        .Err(Err)
+    );
 endmodule
