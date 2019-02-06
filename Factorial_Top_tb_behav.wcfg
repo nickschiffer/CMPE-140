@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1035006755fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000fs"></Cursor1Time>
+      <ZoomEndTime time="1000000001fs"></ZoomEndTime>
+      <Cursor1Time time="308065000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="121"></ValueColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="35" />
+   <WVObjectSize size="36" />
    <wvobject fp_name="/Factorial_Top_tb/Go_tb" type="logic">
       <obj_property name="ElementShortName">Go_tb</obj_property>
       <obj_property name="ObjectShortName">Go_tb</obj_property>
@@ -43,16 +43,6 @@
    <wvobject fp_name="/Factorial_Top_tb/nf_tb" type="array">
       <obj_property name="ElementShortName">nf_tb[3:0]</obj_property>
       <obj_property name="ObjectShortName">nf_tb[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Factorial_Top_tb/DUT/CU/CS" type="array">
-      <obj_property name="ElementShortName">CS[2:0]</obj_property>
-      <obj_property name="ObjectShortName">CS[2:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Factorial_Top_tb/DUT/CU/NS" type="array">
-      <obj_property name="ElementShortName">NS[2:0]</obj_property>
-      <obj_property name="ObjectShortName">NS[2:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/CU/GT_Input" type="logic">
       <obj_property name="ElementShortName">GT_Input</obj_property>
@@ -107,19 +97,21 @@
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/CNT_Out" type="array">
       <obj_property name="ElementShortName">CNT_Out[3:0]</obj_property>
       <obj_property name="ObjectShortName">CNT_Out[3:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/MUX_Out" type="array">
       <obj_property name="ElementShortName">MUX_Out[31:0]</obj_property>
       <obj_property name="ObjectShortName">MUX_Out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/REG_Out" type="array">
       <obj_property name="ElementShortName">REG_Out[31:0]</obj_property>
       <obj_property name="ObjectShortName">REG_Out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/MUL_Out" type="array">
       <obj_property name="ElementShortName">MUL_Out[31:0]</obj_property>
       <obj_property name="ObjectShortName">MUL_Out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/DUT/DP/Data_Width" type="array">
       <obj_property name="ElementShortName">Data_Width[31:0]</obj_property>
@@ -220,5 +212,40 @@
          <obj_property name="ObjectShortName">Out[31:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
+   </wvobject>
+   <wvobject fp_name="group115" type="group">
+      <obj_property name="label">CNT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/D" type="array">
+         <obj_property name="ElementShortName">D[3:0]</obj_property>
+         <obj_property name="ObjectShortName">D[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/Load_Cnt" type="logic">
+         <obj_property name="ElementShortName">Load_Cnt</obj_property>
+         <obj_property name="ObjectShortName">Load_Cnt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/En" type="logic">
+         <obj_property name="ElementShortName">En</obj_property>
+         <obj_property name="ObjectShortName">En</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/Clk" type="logic">
+         <obj_property name="ElementShortName">Clk</obj_property>
+         <obj_property name="ObjectShortName">Clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Factorial_Top_tb/DUT/DP/COUNTER/Q" type="array">
+         <obj_property name="ElementShortName">Q[3:0]</obj_property>
+         <obj_property name="ObjectShortName">Q[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/Factorial_Top_tb/DUT/CU/CS" type="array">
+      <obj_property name="ElementShortName">CS[2:0]</obj_property>
+      <obj_property name="ObjectShortName">CS[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Factorial_Top_tb/DUT/CU/NS" type="array">
+      <obj_property name="ElementShortName">NS[2:0]</obj_property>
+      <obj_property name="ObjectShortName">NS[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>

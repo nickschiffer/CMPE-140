@@ -63,29 +63,29 @@ module Factorial_CU(
     
     //State Register (sequential)
     always @ (posedge clk)
-        CS = NS;
+        CS <= NS;
     
     //Output Logic
     always @ (CS)
     begin
         case (CS)
-            Idle:
+            Idle: //S0
             begin
                 {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b1_0_0_0_0_0;
             end
-            Load_Cnt_AND_Reg:
+            Load_Cnt_AND_Reg: //S1
             begin
                 {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b1_1_1_1_0_0;
             end
-            Wait:
+            Wait: //S2
             begin
                 {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b0_0_0_0_0_0;
             end
-            OE_AND_Done:
+            OE_AND_Done: //S3
             begin
                 {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b0_0_0_0_1_1;
             end
-            Mult_AND_Dec:
+            Mult_AND_Dec: //S4
             begin
                 {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b0_0_1_1_0_0;
             end
