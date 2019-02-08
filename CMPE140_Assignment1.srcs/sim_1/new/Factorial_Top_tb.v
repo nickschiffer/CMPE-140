@@ -50,28 +50,31 @@ endtask
 initial
 begin
     $display("Factorial Top Test Begin");
-    Go_tb = 0;
-    tick;
-    tick;
-    tick;
-    Go_tb  = 1;
     clk_tb = 0;
-    n_tb = 4'd5;
+    n_tb = 4'd1;
     tick;
-    tick;
-    tick;
-    tick;
-    tick;
-    tick;
-    tick;
-    tick;
-    tick;
-    
-    while (!(Done_tb || Err_tb))
-    begin
+    while (n_tb < 15)
+    begin  
+        Go_tb  = 1;
+        clk_tb = 0;
         tick;
+        while (!(Done_tb || Err_tb))
+        begin
+            tick;
+        end
+        $display("%d! = %d",n_tb, nf_tb);
+        n_tb = n_tb + 4'd1;
     end
-    $display("%d! = %d",n_tb, nf_tb);
+    
+    
+//    n_tb = 4'd6;
+//    tick;
+//    while (!(Done_tb || Err_tb))
+//    begin
+//        tick;
+//    end
+//    $display("%d! = %d",n_tb, nf_tb);
+    
     $display("Test Complete");
     $finish;
 end

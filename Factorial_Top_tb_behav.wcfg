@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1021538463fs"></ZoomEndTime>
-      <Cursor1Time time="308065000fs"></Cursor1Time>
+      <ZoomStartTime time="18250656000fs"></ZoomStartTime>
+      <ZoomEndTime time="20446437130fs"></ZoomEndTime>
+      <Cursor1Time time="1374338000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="112"></ValueColumnWidth>
+      <ValueColumnWidth column_width="107"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="36" />
    <wvobject fp_name="/Factorial_Top_tb/Go_tb" type="logic">
@@ -31,6 +31,7 @@
    <wvobject fp_name="/Factorial_Top_tb/n_tb" type="array">
       <obj_property name="ElementShortName">n_tb[3:0]</obj_property>
       <obj_property name="ObjectShortName">n_tb[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Factorial_Top_tb/Done_tb" type="logic">
       <obj_property name="ElementShortName">Done_tb</obj_property>

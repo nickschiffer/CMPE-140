@@ -29,9 +29,10 @@ module Factorial_CU(
 
     //Next and Current State Registers
     reg [2:0] CS = 0, NS;
-    reg Err_Internal, Done_Internal;
+    reg Err_Internal = 0, Done_Internal = 0;
     
-    assign Err  = Err_Internal;
+    //assign Err  = Err_Internal;
+    assign Err = GT_Input;
     assign Done = Done_Internal;
 
     //encode states
@@ -49,21 +50,22 @@ module Factorial_CU(
         case (CS)
             Idle:
             case({go,GT_Input})
-                2'b11:  {NS,Err_Internal} = {Idle,1'b1};
-                2'b10:  {NS,Err_Internal} = {Load_Cnt_AND_Reg,1'b0};
-                2'b0?:  {NS,Err_Internal} = {Idle,1'b0};
+                2'b11:  {NS,Err_Internal} <= {Idle,1'b1};
+                2'b10:  {NS,Err_Internal} <= {Load_Cnt_AND_Reg,1'b0};
+                2'b0?:  {NS,Err_Internal} <= {Idle,1'b0};
                 default: NS = Idle; 
             endcase
-            Load_Cnt_AND_Reg:          NS = Wait;
-            Wait:                      NS = GT_Fact ? Mult_AND_Dec : OE_AND_Done;
-            OE_AND_Done:               NS = Idle;
-            Mult_AND_Dec:              NS = Wait;
+            Load_Cnt_AND_Reg:          NS <= Wait;
+            //Wait2:                     NS <= Wait;
+            Wait:                      NS <= GT_Fact ? Mult_AND_Dec : OE_AND_Done;
+            OE_AND_Done:               NS <= Idle;
+            Mult_AND_Dec:              NS <= Wait;
         endcase
     end
     
     //State Register (sequential)
     always @ (posedge clk)
-        CS <= NS;
+        CS = NS;
     
     //Output Logic
     always @ (CS)
@@ -71,7 +73,7 @@ module Factorial_CU(
         case (CS)
             Idle: //S0
             begin
-                {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b1_0_0_0_0_0;
+                {Sel, Load_Cnt, En, Load_Reg, OE, Done_Internal} <= 6'b1_1_1_0_0_0;
             end
             Load_Cnt_AND_Reg: //S1
             begin
