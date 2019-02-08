@@ -24,7 +24,8 @@ module Factorial_FPGA(
     input go, clk100MHz, man_clk,
     input [3:0] n,
     output [7:0] LEDSEL, LEDOUT,
-    output done, err
+    output done, err,
+    output [3:0] n_out
     );
     
     supply1 [7:0] vcc;
@@ -33,6 +34,7 @@ module Factorial_FPGA(
     wire [31:0] nf;
     wire dummy;
     assign dummy = 0;
+    assign n_out = n;
     
 //    reg  [7:0] LED0, LED1, LED2, LED3, LED4, LED5, LED6, LED7;
     wire [7:0] LED0, LED1, LED2, LED3, LED4, LED5, LED6, LED7;
@@ -70,7 +72,7 @@ module Factorial_FPGA(
     
     clk_gen CLK (clk100MHz, dummy, DONT_USE, clk_5KHz);
     
-    bin2bcd32(
+    bin2bcd32 B2BCD (
         .value(nf),
         .dig0(BCD0),
         .dig1(BCD1),
@@ -81,6 +83,48 @@ module Factorial_FPGA(
         .dig6(BCD6),
         .dig7(BCD7)
     );
+    
+    bcd_to_7seg B2LED0 (
+        .BCD(BCD0),
+        .s(LED0)
+    );
+
+    bcd_to_7seg B2LED1 (
+        .BCD(BCD1),
+        .s(LED1)
+    );
+
+    bcd_to_7seg B2LED2 (
+        .BCD(BCD2),
+        .s(LED2)
+    );
+
+    bcd_to_7seg B2LED3 (
+        .BCD(BCD3),
+        .s(LED3)
+    );
+
+    bcd_to_7seg B2LED4 (
+        .BCD(BCD4),
+        .s(LED4)
+    );
+
+    bcd_to_7seg B2LED5 (
+        .BCD(BCD5),
+        .s(LED5)
+    );
+
+    bcd_to_7seg B2LED6 (
+        .BCD(BCD6),
+        .s(LED6)
+    );
+
+    bcd_to_7seg B2LED7 (
+        .BCD(BCD7),
+        .s(LED7)
+    );
+    
+    
     
     
     

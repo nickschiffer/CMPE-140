@@ -36,7 +36,7 @@ module bcd_to_7seg
                         8:      s = 8'b10000000;
                         9:      s = 8'b10000100;
                         /*
-                        TODO: Need to figure out these letters
+                        TODO: Verify that these are correct
                         */
                         4'ha:   s = 8'b10000001;
                         4'hb:   s = 8'b11010000;
