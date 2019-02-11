@@ -98,3 +98,4 @@
 *.hw/
 *.ip_user_files/
 .Xil/*
+*.str
