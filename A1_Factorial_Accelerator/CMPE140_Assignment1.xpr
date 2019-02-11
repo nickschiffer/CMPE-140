@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="39" Path="C:/Vivado/CMPE-140/CMPE140_Assignment1.xpr">
+<Project Version="7" Minor="39" Path="C:/Vivado/CMPE-140/A1_Factorial_Accelerator/CMPE140_Assignment1.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="ecf0a9162f344224a55b0f2ec64bee83"/>

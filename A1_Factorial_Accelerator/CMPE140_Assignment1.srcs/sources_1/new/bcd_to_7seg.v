@@ -38,12 +38,12 @@ module bcd_to_7seg
                         /*
                         TODO: Verify that these are correct
                         */
-                        4'ha:   s = 8'b10000001;
-                        4'hb:   s = 8'b11010000;
-                        4'hc:   s = 8'b10011010;
-                        4'hd:   s = 8'b11100000;
-                        4'he:   s = 8'b10010010;
-                        4'hf:   s = 8'b10010011;
+                        4'hA:   s = 8'b10000001;
+                        4'hB:   s = 8'b11010000;
+                        4'hC:   s = 8'b10011010;
+                        4'hD:   s = 8'b11100000;
+                        4'hE:   s = 8'b10010010;
+                        4'hF:   s = 8'b10010011;
                         default:s = 8'b01111111;
                 endcase
         end
