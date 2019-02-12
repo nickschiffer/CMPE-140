@@ -80,9 +80,9 @@ begin
         end
         if (Done_tb)
         begin
-        $display("%0d!     = %0d",n_tb, nf_tb);
-        nf_inf = factorial(n_tb);
-        $display("%0d! inf = %0d\n",n_tb, nf_inf);
+            $display("%0d!     = %0d",n_tb, nf_tb);
+            nf_inf = factorial(n_tb);
+            $display("%0d! inf = %0d\n",n_tb, nf_inf);
         end
         else if (Err_tb)
         begin
@@ -98,14 +98,6 @@ begin
         n_tb = n_tb + 4'd1;
     end
     
-    
-//    n_tb = 4'd6;
-//    tick;
-//    while (!(Done_tb || Err_tb))
-//    begin
-//        tick;
-//    end
-//    $display("%d! = %d",n_tb, nf_tb);
     
     $display("Test Complete");
     $finish;

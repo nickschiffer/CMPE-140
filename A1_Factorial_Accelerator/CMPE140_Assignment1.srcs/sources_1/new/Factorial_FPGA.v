@@ -72,7 +72,7 @@ module Factorial_FPGA(
     
     clk_gen CLK (clk100MHz, dummy, DONT_USE, clk_5KHz);
     
-    bin2bcd32 B2BCD (
+    bin32_to_8hex B2HEX (
         .value(nf),
         .dig0(BCD0),
         .dig1(BCD1),
