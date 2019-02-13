@@ -5,7 +5,7 @@
 // 
 // Create Date: 02/07/2019 07:32:15 PM
 // Design Name: 
-// Module Name: bcd_to_7seg
+// Module Name: hex_to_7seg
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,11 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module bcd_to_7seg
-(input [3:0] BCD, output reg [7:0] s);
-        always @ (BCD)
+module hex_to_7seg
+(input [3:0] HEX, output reg [7:0] s);
+        always @ (HEX)
         begin
-                case (BCD)
+                case (HEX)
                         0:      s = 8'b10001000;
                         1:      s = 8'b11101101;
                         2:      s = 8'b10100010;

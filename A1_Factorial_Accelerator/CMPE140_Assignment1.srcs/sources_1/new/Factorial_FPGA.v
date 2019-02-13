@@ -38,7 +38,7 @@ module Factorial_FPGA(
     
 //    reg  [7:0] LED0, LED1, LED2, LED3, LED4, LED5, LED6, LED7;
     wire [7:0] LED0, LED1, LED2, LED3, LED4, LED5, LED6, LED7;
-    wire [3:0] BCD0, BCD1, BCD2, BCD3, BCD4, BCD5, BCD6, BCD7;     
+    wire [3:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;     
     
     Factorial_Top Top (
         .Go(go),
@@ -74,53 +74,53 @@ module Factorial_FPGA(
     
     bin32_to_8hex B2HEX (
         .value(nf),
-        .dig0(BCD0),
-        .dig1(BCD1),
-        .dig2(BCD2),
-        .dig3(BCD3),
-        .dig4(BCD4),
-        .dig5(BCD5),
-        .dig6(BCD6),
-        .dig7(BCD7)
+        .dig0(HEX0),
+        .dig1(HEX1),
+        .dig2(HEX2),
+        .dig3(HEX3),
+        .dig4(HEX4),
+        .dig5(HEX5),
+        .dig6(HEX6),
+        .dig7(HEX7)
     );
     
-    bcd_to_7seg B2LED0 (
-        .BCD(BCD0),
+    hex_to_7seg H2LED0 (
+        .HEX(HEX0),
         .s(LED0)
     );
 
-    bcd_to_7seg B2LED1 (
-        .BCD(BCD1),
+    hex_to_7seg H2LED1 (
+        .HEX(HEX1),
         .s(LED1)
     );
 
-    bcd_to_7seg B2LED2 (
-        .BCD(BCD2),
+    hex_to_7seg H2LED2 (
+        .HEX(HEX2),
         .s(LED2)
     );
 
-    bcd_to_7seg B2LED3 (
-        .BCD(BCD3),
+    hex_to_7seg H2LED3 (
+        .HEX(HEX3),
         .s(LED3)
     );
 
-    bcd_to_7seg B2LED4 (
-        .BCD(BCD4),
+    hex_to_7seg H2LED4 (
+        .HEX(HEX4),
         .s(LED4)
     );
 
-    bcd_to_7seg B2LED5 (
-        .BCD(BCD5),
+    hex_to_7seg H2LED5 (
+        .HEX(HEX5),
         .s(LED5)
     );
 
-    bcd_to_7seg B2LED6 (
-        .BCD(BCD6),
+    hex_to_7seg H2LED6 (
+        .HEX(HEX6),
         .s(LED6)
     );
 
-    bcd_to_7seg B2LED7 (
-        .BCD(BCD7),
+    hex_to_7seg H2LED7 (
+        .HEX(HEX7),
         .s(LED7)
     );
     

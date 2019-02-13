@@ -5,7 +5,7 @@
 // 
 // Create Date: 02/07/2019 07:28:45 PM
 // Design Name: 
-// Module Name: bin2bcd32
+// Module Name: bin32_to_8hexs
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -48,14 +48,14 @@ module bin32_to_8hex(
     // assign dig6 = (value / (1 << (4 * 6))) % (1 << 4); 
     // assign dig7 = (value / (1 << (4 * 7))) % (1 << 4);
 
-    // assign dig0 = value              % (1 << 4); 
-    // assign dig1 = (value >> (4 * 1)) % (1 << 4); 
-    // assign dig2 = (value >> (4 * 2)) % (1 << 4); 
-    // assign dig3 = (value >> (4 * 3)) % (1 << 4); 
-    // assign dig4 = (value >> (4 * 4)) % (1 << 4); 
-    // assign dig5 = (value >> (4 * 5)) % (1 << 4); 
-    // assign dig6 = (value >> (4 * 6)) % (1 << 4); 
-    // assign dig7 = (value >> (4 * 7)) % (1 << 4);
+//     assign dig0 = value              % (1 << 4); 
+//     assign dig1 = (value >> (4 * 1)) % (1 << 4); 
+//     assign dig2 = (value >> (4 * 2)) % (1 << 4); 
+//     assign dig3 = (value >> (4 * 3)) % (1 << 4); 
+//     assign dig4 = (value >> (4 * 4)) % (1 << 4); 
+//     assign dig5 = (value >> (4 * 5)) % (1 << 4); 
+//     assign dig6 = (value >> (4 * 6)) % (1 << 4); 
+//     assign dig7 = (value >> (4 * 7)) % (1 << 4);
 
     assign {dig7, dig6, dig5, dig4, dig3, dig2, dig1, dig0} = value;
 endmodule
