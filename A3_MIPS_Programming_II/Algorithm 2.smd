@@ -1,0 +1,17 @@
+#   $a0 = n, $s0 = n!
+
+addi $a0, $0, 5
+addi $s0, $0, 1
+
+while: 
+	slti $t0, $a0, 1 	# if 1 < n, $t0 = 1 else $t0 = 0
+	bne $t0, $0, L1		# if $t0 = 1 branch to L1
+	j done
+
+L1: 
+	mult $s0, $a0
+    	mflo $s0
+    	subi $a0, $a0, 1
+    	j while 
+
+done: sw $v0, 12($s0)
