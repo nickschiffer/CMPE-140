@@ -1,39 +1,49 @@
 # $a0 = a, $a1 = b, $s0 = c, $s1 = x, $s2 = y
 
-addiu $a0, $0, 0x8000
-addiu $a1, $0, 0x00A9
-addiu $s0, $0, 1974
+main:
+	addiu $a0, $0, 0x8000
+	addiu $a1, $0, 0x00A9
+	addiu $s0, $0, 1974
+	
+	mult $a0, $a0			# x=a*a;
+	mflo $s1				
+	sw   $s1, 0x20($0)		# store the value of x to memory location 0x20
+	
+	mult $s1,  $a1			# y=x*b;
+	mfhi $s2
+	mflo $s3
 
-mult $a0, $a0			# x=a*a;
-mflo $s1			# store the value of x to memory location 0x20
+	# y=y>>16;
 
-mult $s1,  $a1			# y=x*b;
-mfhi $s2			# store the value of y to memory location 0x24
+	srl  $s3, $s3, 16		# shift low right 16
+	sll	$s2, $s2, 16		# shift high left 16
+	or   $s2, $s2, $s3		# or results and store into y
+	sw   $s2, 0x24($0)		# store result into 0x24
+	
+	# c=(c+(y/c))/2;
+	
+	divu $s2, $s0			# y/c
+	mflo $t0
+	addu $s0, $t0, $s0		# c + (y/c)
 
-srl $s2, $s2, 16		# y=y>>16;
+	srl  $s0, $s0, 1 		# c /= 2
+	sw   $s0, 0x2C($0)         # store value of c to memory location at address 0x2C				
+		
+while: 					# while(c >= 1665){ c = (c + y / c) / 2;}
+	slti  $t3, $s0, 1665 		# if $t2 < $s0, $t3 = 1 else $t3 = 0 
+	bne  $t3, $0, done 		# $t3 = 1 branch to done
+						
+	# c=(c+(y/c))/2;
+	
+	divu $s2, $s0			# y/c
+	mflo $t0
+	addu $s0, $t0, $s0		# c + (y/c)
 
-# c=(c+y/c)/2;
+	srl  $s0, $s0, 1		# c /= 2 
+   	
+	j while  
 
-addu $t0, $s0, $s2		# c + y
-div $t0, $s0			# c+y/c
-addi $t1, $0, 2			# $t1 = 2
-div $t0, $t1			# (c+y/c)/2
-addu $s0, $0, $t1		# $s0 = $t1				
-
-addi $t2, $0, 1665		# $t2 = 1665
-
-while: 				# while(c >= 1665){ c = (c + y / c) / 2;}
-	slt  $t3, $t2, $s0   	# if $t2 < $0, $t3 = 1 else $t3 = 0 
-	bne  $t3, $0, L1 	# $t3 = 1 branch to L1
-	sll $s0, $s0, 8		# c=c<<8;
-	j done
-
-L1:				# c=(c+y/c)/2;
-	addu $t0, $s0, $s2	# c + y
-	div $t0, $s0		# c+y/c
-	addi $t1, $0, 2		# $t1 = 2
-    	div $t0, $t1		# (c+y/c)/2
-    	addu $s0, $0, $t1	# $s0 = $t1
-    	j while  
-
-done: 	#sw $v0, 30($s0)		# store the value of c to memory location 0x30
+done:
+	sll  $s0, $s0, 8		# c <<= 8; 
+	sw $s0, 0x30($0)		# store the value of c to memory location 0x30
+	j  main
