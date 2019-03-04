@@ -25,7 +25,7 @@ Exit_Loop:
         
         lw    $t1, 100($a0)     #t1 = my_array[25]
         lw    $t2, 120($a0)     #t2 = my_array[30]
-        addu  $t1, $t1, $t2     	#t1 = my_array[25] + my_array[30]
+        addu  $t1, $t1, $t2     #t1 = my_array[25] + my_array[30]
         addiu $t2, $zero, 30 
         divu  $t1, $t2          #(my_array[25] + my_array[30])/30
         mflo  $a1               # a1 = (my_array[25] + my_array[30])/30
