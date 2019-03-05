@@ -35,7 +35,7 @@ Exit_Loop:
         jal factorial           # call procedure     
         add $s0, $v0, $0        # return value
         sw  $s0, 0x10($zero)    # store n! in 0x10
-        j   main                # reset
+        j   Main                # reset
 
 factorial:
 	# factorial computation     
