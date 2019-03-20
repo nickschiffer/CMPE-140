@@ -2,7 +2,7 @@ module mips_fpga (
         input  wire       clk100MHz,
         input  wire       rst,
         input  wire       button,
-        input  wire [8:0] switches,
+        input  wire [7:0] switches,
         output wire       we_dm,
         output wire [7:0] LEDSEL,
         output wire [7:0] LEDOUT
@@ -116,33 +116,23 @@ module mips_fpga (
         );
     
     /*
-    switches [8:5] = 0000: Display half word of register selected by switches[4:0]
-    #switches[8:5] = 0000 : Display lower  half word of register selected by switches[4:0]
-    #switches[8:5] = 0001 : Display higher half word of register selected by switches[4:0]
+    switches [7:5] = 000: Display word of register selected by switches[4:0]
     
-    switches [8:5] = 0001: Display half word of instr
-    #switches[8:5] = 0010 : Display lower  half word of 'instr'
-    #switches[8:5] = 0011 : Display higher half word of 'instr'
+    switches [7:5] = 001: Display word of instr
     
-    switches [8:5] = 0010: Display half word of 'alu_out'
-    #switches[8:5] = 0100 : Display lower  half word of 'alu_out'
-    #switches[8:5] = 0101 : Display higher half word of 'alu_out'
+    switches [7:5] = 010: Display word of 'alu_out'
     
-    switches [8:5] = 0011: Display half word of 'wd_dm'
-    #switches[8:5] = 0110 : Display lower  half word of 'wd_dm'
-    #switches[8:5] = 0111 : Display higher half word of 'wd_dm'
-
-    switches [8:5] = 0100: Display half word of 'wd_dm'
-    switches[8:5] = 1XX0 : Display lower  half word of 'pc_current'
-    switches[8:5] = 1XX1 : Display higher half word of 'pc_current'
+    switches [7:5] = 011: Display word of 'wd_dm'
+    
+    switches [7:5] = 1XX : Display word of 'pc_current'
     */
     always @ (posedge clk100MHz) begin
-        case ({switches[8:5]})
-            4'b0000: reg_hex = dispData[31:0];
-            4'b0001: reg_hex = instr[31:0];
-            4'b0010: reg_hex = alu_out[31:0];
-            4'b0011: reg_hex = wd_dm[31:0];
-            4'b01??: reg_hex = pc_current[31:0];
+        casez ({switches[7:5]})
+            3'b000: reg_hex  = dispData[31:0];
+            3'b001: reg_hex  = instr[31:0];
+            3'b010: reg_hex  = alu_out[31:0];
+            3'b011: reg_hex  = wd_dm[31:0];
+            3'b1??: reg_hex  = pc_current[31:0];
             default: reg_hex = pc_current[31:0];
         endcase
     end

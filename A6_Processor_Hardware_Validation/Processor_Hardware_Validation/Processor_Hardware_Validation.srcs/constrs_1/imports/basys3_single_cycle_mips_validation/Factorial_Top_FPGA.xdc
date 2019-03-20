@@ -11,7 +11,7 @@
         set_property -dict {PACKAGE_PIN T18 IOSTANDARD LVCMOS33} [get_ports {switches[5]}];  # Switch 5
         set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports {switches[6]}];  # Switch 6
         set_property -dict {PACKAGE_PIN R13 IOSTANDARD LVCMOS33} [get_ports {switches[7]}];  # Switch 7
-        set_property -dict {PACKAGE_PIN T8  IOSTANDARD LVCMOS33} [get_ports {switches[8]}];  # Switch 8
+#        set_property -dict {PACKAGE_PIN T8  IOSTANDARD LVCMOS33} [get_ports {switches[8]}];  # Switch 8
 
     #Buttons
         set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports {button}]; # Center Button
