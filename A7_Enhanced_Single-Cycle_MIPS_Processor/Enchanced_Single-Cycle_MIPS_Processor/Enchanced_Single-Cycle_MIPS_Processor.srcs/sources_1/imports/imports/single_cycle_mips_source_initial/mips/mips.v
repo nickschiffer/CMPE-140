@@ -18,6 +18,9 @@ module mips (
     wire       alu_src;
     wire       dm2reg;
     wire [2:0] alu_ctrl;
+    wire       hilo_we;
+    wire [1:0] hilo_mux_ctrl;
+    wire       jr_mux_ctrl;
 
     datapath dp (
             .clk            (clk),
@@ -35,7 +38,10 @@ module mips (
             .pc_current     (pc_current),
             .alu_out        (alu_out),
             .wd_dm          (wd_dm),
-            .rd3            (rd3)
+            .rd3            (rd3),
+            .hilo_we        (hilo_we),
+            .hilo_mux_ctrl  (hilo_mux_ctrl),
+            .jr_mux_ctrl    (jr_mux_ctrl)
         );
 
     controlunit cu (
@@ -48,7 +54,10 @@ module mips (
             .alu_src        (alu_src),
             .we_dm          (we_dm),
             .dm2reg         (dm2reg),
-            .alu_ctrl       (alu_ctrl)
+            .alu_ctrl       (alu_ctrl),
+            .hilo_we        (hilo_we),
+            .hilo_mux_ctrl  (hilo_mux_ctrl),
+            .jr_mux_ctrl    (jr_mux_ctrl)
         );
 
 endmodule

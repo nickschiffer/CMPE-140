@@ -8,10 +8,14 @@ module controlunit (
         output wire        alu_src,
         output wire        we_dm,
         output wire        dm2reg,
-        output wire [2:0]  alu_ctrl
+        output wire [3:0]  alu_ctrl,
+        output wire [1:0]  hilo_mux_ctrl,
+        output wire        hilo_we,
+        output wire        jr_mux_ctrl
     );
     
     wire [1:0] alu_op;
+    wire [1:0] hilo_mux_internal;
 
     maindec md (
         .opcode         (opcode),
@@ -28,7 +32,12 @@ module controlunit (
     auxdec ad (
         .alu_op         (alu_op),
         .funct          (funct),
-        .alu_ctrl       (alu_ctrl)
+        .alu_ctrl       (alu_ctrl),
+        .hilo_mux_ctrl  (hilo_mux_internal),
+        .hilo_we        (hilo_we),
+        .jr_mux_ctrl    (jr_mux_ctrl)
     );
+    
+    assign hilo_mux_ctrl = (hilo_mux_internal) ? hilo_mux_internal : 2'b0;
 
 endmodule
