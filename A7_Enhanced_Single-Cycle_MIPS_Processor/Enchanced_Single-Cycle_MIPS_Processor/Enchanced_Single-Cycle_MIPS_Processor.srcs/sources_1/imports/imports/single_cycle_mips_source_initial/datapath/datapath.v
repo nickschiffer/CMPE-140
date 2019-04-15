@@ -34,8 +34,9 @@ module datapath (
     wire [31:0] alu_pb;
     wire [31:0] wd_rf_1, wd_rf_out;
     wire        zero;
-    wire [31:0] alu_hi, alu_lo;
+    wire [31:0] pipeline_mult_hi, pipeline_mult_lo;
     wire [31:0] hi_out, lo_out;
+    wire [31:0] rd1_out, rd2_out; 
     
     assign pc_src = branch & zero;
     assign ba = {sext_imm[29:0], 2'b00};
@@ -91,8 +92,10 @@ module datapath (
             .ra3            (ra3),
             .wa             (rf_wa),
             .wd             (wd_rf_out),
-            .rd1            (alu_pa),
-            .rd2            (wd_dm),
+            //.rd1            (alu_pa),
+            .rd1            (rd1_out),
+            //.rd2            (wd_dm),
+            .rd2            (rd2_out),
             .rd3            (rd3)
         );
 
@@ -104,20 +107,22 @@ module datapath (
     // --- ALU Logic --- //
     mux2 #(32) alu_pb_mux (
             .sel            (alu_src),
-            .a              (wd_dm),
+            //.a              (wd_dm),
+            .a              (rd2_out),
             .b              (sext_imm),
             .y              (alu_pb)
         );
 
     alu alu (
             .op             (alu_ctrl),
-            .a              (alu_pa),
+            //.a              (alu_pa),
+            .a              (rd1_out),
             .b              (alu_pb),
             .zero           (zero),
             .y              (alu_out),
-            .hi             (alu_hi),
-            .lo             (alu_lo),
-            .shift_ammt     (instr[10:6])
+            //.hi             (alu_hi),
+            //.lo             (alu_lo),
+            .shamt          (instr[10:6])
         );
 
     // --- MEM Logic --- //
@@ -131,26 +136,35 @@ module datapath (
     mux2 #(32) jr_mux (
             .sel            (jr_mux_ctrl),
             .a              (pc_next_1),
-            .b              (alu_pa),
+//            .b              (alu_pa),
+            .b              (rd1_out),
             .y              (pc_next_final)
         );
     // --- HI/LO REG --- //
     mux4 #(32) hilo_mux (
             .sel            (hilo_mux_ctrl),
             .a              (wd_rf_1),
-            .b              (hi_out),
-            .c              (lo_out),
+            .b              (lo_out),
+            .c              (hi_out),
             .y              (wd_rf_out)
     );
     // --- Hi and Lo Registers --- //
     HiLo_reg #(32) hi_lo_reg (
             .clk            (clk),
-            .hi             (alu_hi),
-            .lo             (alu_lo),
+            .hi             (pipeline_mult_hi),
+            .lo             (pipeline_mult_lo),
             .rst            (rst),
             .we             (hilo_we),
             .hi_out         (hi_out),
             .lo_out         (lo_out)
+    );
+    
+    pipelined_multiplier #(32, 1) mult (
+            .a              (rd1_out),
+            .b              (rd2_out),
+            .clk            (clk),
+            .pdt            ({pipeline_mult_hi, pipeline_mult_lo})
+            //TODO finish outputs
     );
      
 
