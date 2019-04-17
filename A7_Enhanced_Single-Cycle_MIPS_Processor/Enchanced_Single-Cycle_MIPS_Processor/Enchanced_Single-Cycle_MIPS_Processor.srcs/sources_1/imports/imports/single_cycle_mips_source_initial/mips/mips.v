@@ -17,10 +17,12 @@ module mips (
     wire       we_reg;
     wire       alu_src;
     wire       dm2reg;
-    wire [2:0] alu_ctrl;
+    wire [3:0] alu_ctrl;
     wire       hilo_we;
     wire [1:0] hilo_mux_ctrl;
     wire       jr_mux_ctrl;
+    wire       jal_wd_mux_sel;
+    wire       jal_wa_mux_sel;
 
     datapath dp (
             .clk            (clk),
@@ -41,7 +43,9 @@ module mips (
             .rd3            (rd3),
             .hilo_we        (hilo_we),
             .hilo_mux_ctrl  (hilo_mux_ctrl),
-            .jr_mux_ctrl    (jr_mux_ctrl)
+            .jr_mux_ctrl    (jr_mux_ctrl),
+            .jal_wa_mux_sel (jal_wa_mux_sel),
+            .jal_wd_mux_sel (jal_wd_mux_sel)
         );
 
     controlunit cu (
@@ -57,7 +61,9 @@ module mips (
             .alu_ctrl       (alu_ctrl),
             .hilo_we        (hilo_we),
             .hilo_mux_ctrl  (hilo_mux_ctrl),
-            .jr_mux_ctrl    (jr_mux_ctrl)
+            .jr_mux_ctrl    (jr_mux_ctrl),
+            .jal_wa_mux_sel (jal_wa_mux_sel),
+            .jal_wd_mux_sel (jal_wd_mux_sel)
         );
 
 endmodule

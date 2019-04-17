@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_mips_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_mips_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="354333333fs"></ZoomStartTime>
+      <ZoomEndTime time="445133334fs"></ZoomEndTime>
+      <Cursor1Time time="430000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="131"></NameColumnWidth>
+      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/tb_mips_top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/we_dm" type="logic">
+      <obj_property name="ElementShortName">we_dm</obj_property>
+      <obj_property name="ObjectShortName">we_dm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/pc_current" type="array">
+      <obj_property name="ElementShortName">pc_current[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_current[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/instr" type="array">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/alu_out" type="array">
+      <obj_property name="ElementShortName">alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/wd_dm" type="array">
+      <obj_property name="ElementShortName">wd_dm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wd_dm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/rd_dm" type="array">
+      <obj_property name="ElementShortName">rd_dm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_dm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mips_top/DONT_USE" type="array">
+      <obj_property name="ElementShortName">DONT_USE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DONT_USE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group69" type="group">
+      <obj_property name="label">CU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/opcode" type="array">
+         <obj_property name="ElementShortName">opcode[5:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/funct" type="array">
+         <obj_property name="ElementShortName">funct[5:0]</obj_property>
+         <obj_property name="ObjectShortName">funct[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/branch" type="logic">
+         <obj_property name="ElementShortName">branch</obj_property>
+         <obj_property name="ObjectShortName">branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/jump" type="logic">
+         <obj_property name="ElementShortName">jump</obj_property>
+         <obj_property name="ObjectShortName">jump</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/reg_dst" type="logic">
+         <obj_property name="ElementShortName">reg_dst</obj_property>
+         <obj_property name="ObjectShortName">reg_dst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/we_reg" type="logic">
+         <obj_property name="ElementShortName">we_reg</obj_property>
+         <obj_property name="ObjectShortName">we_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/alu_src" type="logic">
+         <obj_property name="ElementShortName">alu_src</obj_property>
+         <obj_property name="ObjectShortName">alu_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/we_dm" type="logic">
+         <obj_property name="ElementShortName">we_dm</obj_property>
+         <obj_property name="ObjectShortName">we_dm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/dm2reg" type="logic">
+         <obj_property name="ElementShortName">dm2reg</obj_property>
+         <obj_property name="ObjectShortName">dm2reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/alu_ctrl" type="array">
+         <obj_property name="ElementShortName">alu_ctrl[3:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_ctrl[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/hilo_mux_ctrl" type="array">
+         <obj_property name="ElementShortName">hilo_mux_ctrl[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hilo_mux_ctrl[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/hilo_we" type="logic">
+         <obj_property name="ElementShortName">hilo_we</obj_property>
+         <obj_property name="ObjectShortName">hilo_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/jr_mux_ctrl" type="logic">
+         <obj_property name="ElementShortName">jr_mux_ctrl</obj_property>
+         <obj_property name="ObjectShortName">jr_mux_ctrl</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/alu_op" type="array">
+         <obj_property name="ElementShortName">alu_op[1:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_op[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/cu/hilo_mux_internal" type="array">
+         <obj_property name="ElementShortName">hilo_mux_internal[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hilo_mux_internal[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group101" type="group">
+      <obj_property name="label">DMem</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/we" type="logic">
+         <obj_property name="ElementShortName">we</obj_property>
+         <obj_property name="ObjectShortName">we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/a" type="array">
+         <obj_property name="ElementShortName">a[5:0]</obj_property>
+         <obj_property name="ObjectShortName">a[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/d" type="array">
+         <obj_property name="ElementShortName">d[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/q" type="array">
+         <obj_property name="ElementShortName">q[31:0]</obj_property>
+         <obj_property name="ObjectShortName">q[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/ram" type="array">
+         <obj_property name="ElementShortName">ram[0:63][31:0]</obj_property>
+         <obj_property name="ObjectShortName">ram[0:63][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/dmem/n" type="array">
+         <obj_property name="ElementShortName">n[31:0]</obj_property>
+         <obj_property name="ObjectShortName">n[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group173" type="group">
+      <obj_property name="label">Mult</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/a" type="array">
+         <obj_property name="ElementShortName">a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/b" type="array">
+         <obj_property name="ElementShortName">b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">b[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/pdt" type="array">
+         <obj_property name="ElementShortName">pdt[63:0]</obj_property>
+         <obj_property name="ObjectShortName">pdt[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/a_int" type="array">
+         <obj_property name="ElementShortName">a_int[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a_int[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/b_int" type="array">
+         <obj_property name="ElementShortName">b_int[31:0]</obj_property>
+         <obj_property name="ObjectShortName">b_int[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/pdt_int" type="array">
+         <obj_property name="ElementShortName">pdt_int[0:0][63:0]</obj_property>
+         <obj_property name="ObjectShortName">pdt_int[0:0][63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/i" type="array">
+         <obj_property name="ElementShortName">i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/size" type="array">
+         <obj_property name="ElementShortName">size[31:0]</obj_property>
+         <obj_property name="ObjectShortName">size[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/mult/level" type="array">
+         <obj_property name="ElementShortName">level[31:0]</obj_property>
+         <obj_property name="ObjectShortName">level[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group174" type="group">
+      <obj_property name="label">HiLoReg</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/we" type="logic">
+         <obj_property name="ElementShortName">we</obj_property>
+         <obj_property name="ObjectShortName">we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/hi" type="array">
+         <obj_property name="ElementShortName">hi[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hi[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/lo" type="array">
+         <obj_property name="ElementShortName">lo[31:0]</obj_property>
+         <obj_property name="ObjectShortName">lo[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/hi_out" type="array">
+         <obj_property name="ElementShortName">hi_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hi_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/lo_out" type="array">
+         <obj_property name="ElementShortName">lo_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">lo_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_mips_top/DUT/mips/dp/hi_lo_reg/WIDTH" type="array">
+         <obj_property name="ElementShortName">WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WIDTH[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

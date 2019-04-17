@@ -6,7 +6,7 @@ module imem (
     reg [31:0] rom [0:63];
 
     initial begin
-        $readmemh ("memfile.dat", rom);
+        $readmemh ("memfile2.dat", rom);
     end
 
     assign y = rom[a];

@@ -1,6 +1,7 @@
  module dmem (
         input  wire        clk,
         input  wire        we,
+        //input  wire        rst,
         input  wire [5:0]  a,
         input  wire [31:0] d,
         output wire [31:0] q
@@ -17,6 +18,10 @@
     always @ (posedge clk) begin
         if (we) ram[a] <= d;
     end
+    
+//    always @ (posedge rst) begin
+//        for (n = 0; n < 64; n = n + 1) ram[n] <= 32'hFFFFFFFF;
+//    end
 
     assign q = ram[a];
     

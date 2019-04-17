@@ -51,5 +51,7 @@ always @ (posedge clk)
         pdt_int[0] <= a_int * b_int;
         for(i = 1; i < level; i = i + 1)
         pdt_int[i] <= pdt_int [i - 1];
+
+
     end // always @ (posedge clk)
 endmodule // pipelined_multiplier
