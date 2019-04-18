@@ -40,7 +40,7 @@ module tb_mips_top;
     
     initial begin
         reset;
-        while(pc_current != 32'h54) tick;
+        while(pc_current != 32'h0C) tick;
         $finish;
     end
 

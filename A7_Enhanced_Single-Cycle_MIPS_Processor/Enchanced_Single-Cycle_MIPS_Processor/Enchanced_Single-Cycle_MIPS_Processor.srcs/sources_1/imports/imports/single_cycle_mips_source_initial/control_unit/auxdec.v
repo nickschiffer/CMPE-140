@@ -22,12 +22,12 @@ module auxdec (
                 6'b10_0010: ctrl = 8'b0110_00_0_0; // SUB
                 6'b10_1010: ctrl = 8'b0111_00_0_0; // SLT
                 6'b01_1001: ctrl = 8'b1000_00_1_0; // MULTU
-                6'b01_0000: ctrl = 8'bxxxx_11_0_0; // MFHI
-                6'b01_0010: ctrl = 8'bxxxx_01_0_0; // MFLO
+                6'b01_0000: ctrl = 8'b0000_11_0_0; // MFHI
+                6'b01_0010: ctrl = 8'b0000_01_0_0; // MFLO
                 6'b00_0000: ctrl = 8'b1001_00_0_0; // SLL
                 6'b00_0010: ctrl = 8'b1010_00_0_0; // SRL
-                6'b00_1000: ctrl = 8'bxxxx_00_0_1; // JR
-                default:    ctrl = 8'bxxxx_00_0_0;
+                6'b00_1000: ctrl = 8'b0000_00_0_1; // JR
+                default:    ctrl = 8'bxxxx_xx_x_x;
             endcase
         endcase
     end

@@ -24,8 +24,10 @@ module maindec (
             6'b00_0010: ctrl = 11'b0_1_0_0_0_0_0_00_0_0; // J
             6'b00_0011: ctrl = 11'b0_1_0_1_0_0_0_00_1_1; // JAL //TODO
             6'b10_1011: ctrl = 11'b0_0_0_0_1_1_0_00_0_0; // SW
+            //6'b10_0011: ctrl = 11'b0_0_0_1_1_0_1_00_0_0; // LW
             6'b10_0011: ctrl = 11'b0_0_0_1_1_0_1_00_0_0; // LW
-            default:    ctrl = 11'bx_x_x_x_x_x_x_xx_0_0;
+            default:    ctrl = 11'bx_x_x_0_x_0_x_xx_x_x;
+            //default:    ctrl = 11'b0_0_0_0_0_0_0_00_0_0;
         endcase
     end
 

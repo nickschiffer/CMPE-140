@@ -11,12 +11,12 @@ module alu (
 
     always @ (op, a, b) begin
         case (op)
-            4'b0000: y = a & b;
-            4'b0001: y = a | b;
-            4'b0010: y = a + b;
-            4'b0110: y = a - b;
-            4'b0111: y = (a < b) ? 1 : 0;
-            4'b1000: {hi,lo} = a * b;
+            4'b0000: y <= a & b;
+            4'b0001: y <= a | b;
+            4'b0010: y <= a + b;
+            4'b0110: y <= a - b;
+            4'b0111: y <= (a < b) ? 1 : 0;
+            4'b1000: {hi,lo} <= a * b;
             4'b1001: y <= b << shamt;
             4'b1010: y <= b >> shamt;
         endcase
