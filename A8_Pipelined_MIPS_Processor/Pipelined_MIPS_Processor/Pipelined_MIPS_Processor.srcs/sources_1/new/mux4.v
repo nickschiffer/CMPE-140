@@ -36,6 +36,7 @@ module mux4 #(parameter WIDTH = 8) (
             2'b01: y <= b;
             2'b10: y <= c;
             2'b11: y <= d;
+            default: y <= {WIDTH{1'bx}};
         endcase
 //    assign y = (sel) ? b : a;
     end
