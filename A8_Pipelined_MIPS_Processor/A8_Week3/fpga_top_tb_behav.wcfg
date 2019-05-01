@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="fpga_top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="fpga_top_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="336760000fs"></ZoomStartTime>
+      <ZoomEndTime time="751260001fs"></ZoomEndTime>
+      <Cursor1Time time="359760000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="247"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/fpga_top_tb/button_clk" type="logic">
+      <obj_property name="ElementShortName">button_clk</obj_property>
+      <obj_property name="ObjectShortName">button_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/button_rst" type="logic">
+      <obj_property name="ElementShortName">button_rst</obj_property>
+      <obj_property name="ObjectShortName">button_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/n" type="array">
+      <obj_property name="ElementShortName">n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/Sel" type="logic">
+      <obj_property name="ElementShortName">Sel</obj_property>
+      <obj_property name="ObjectShortName">Sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/LEDSEL" type="array">
+      <obj_property name="ElementShortName">LEDSEL[7:0]</obj_property>
+      <obj_property name="ObjectShortName">LEDSEL[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/LEDOUT" type="array">
+      <obj_property name="ElementShortName">LEDOUT[7:0]</obj_property>
+      <obj_property name="ObjectShortName">LEDOUT[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/factErr" type="logic">
+      <obj_property name="ElementShortName">factErr</obj_property>
+      <obj_property name="ObjectShortName">factErr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/fpga_top_tb/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group13" type="group">
+      <obj_property name="label">sys</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/fpga_top_tb/DUT/clk100MHz" type="logic">
+         <obj_property name="ElementShortName">clk100MHz</obj_property>
+         <obj_property name="ObjectShortName">clk100MHz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/button_clk" type="logic">
+         <obj_property name="ElementShortName">button_clk</obj_property>
+         <obj_property name="ObjectShortName">button_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/button_rst" type="logic">
+         <obj_property name="ElementShortName">button_rst</obj_property>
+         <obj_property name="ObjectShortName">button_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/n" type="array">
+         <obj_property name="ElementShortName">n[3:0]</obj_property>
+         <obj_property name="ObjectShortName">n[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/Sel" type="logic">
+         <obj_property name="ElementShortName">Sel</obj_property>
+         <obj_property name="ObjectShortName">Sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/LEDSEL" type="array">
+         <obj_property name="ElementShortName">LEDSEL[7:0]</obj_property>
+         <obj_property name="ObjectShortName">LEDSEL[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/LEDOUT" type="array">
+         <obj_property name="ElementShortName">LEDOUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">LEDOUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/factErr" type="logic">
+         <obj_property name="ElementShortName">factErr</obj_property>
+         <obj_property name="ObjectShortName">factErr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/hex_out" type="array">
+         <obj_property name="ElementShortName">hex_out[15:0]</obj_property>
+         <obj_property name="ObjectShortName">hex_out[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/reg_hex" type="array">
+         <obj_property name="ElementShortName">reg_hex[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_hex[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/clk_sec" type="logic">
+         <obj_property name="ElementShortName">clk_sec</obj_property>
+         <obj_property name="ObjectShortName">clk_sec</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/clk_5KHz" type="logic">
+         <obj_property name="ElementShortName">clk_5KHz</obj_property>
+         <obj_property name="ObjectShortName">clk_5KHz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/clk_man" type="logic">
+         <obj_property name="ElementShortName">clk_man</obj_property>
+         <obj_property name="ObjectShortName">clk_man</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/gpi1" type="array">
+         <obj_property name="ElementShortName">gpi1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">gpi1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/gpO1_out" type="array">
+         <obj_property name="ElementShortName">gpO1_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">gpO1_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit0" type="array">
+         <obj_property name="ElementShortName">digit0[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit0[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit1" type="array">
+         <obj_property name="ElementShortName">digit1[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit1[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit2" type="array">
+         <obj_property name="ElementShortName">digit2[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit2[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit3" type="array">
+         <obj_property name="ElementShortName">digit3[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit3[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit4" type="array">
+         <obj_property name="ElementShortName">digit4[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit4[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit5" type="array">
+         <obj_property name="ElementShortName">digit5[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit5[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit6" type="array">
+         <obj_property name="ElementShortName">digit6[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit6[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/digit7" type="array">
+         <obj_property name="ElementShortName">digit7[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digit7[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group107" type="group">
+      <obj_property name="label">system</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/gpi1" type="array">
+         <obj_property name="ElementShortName">gpi1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">gpi1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/gpi2" type="array">
+         <obj_property name="ElementShortName">gpi2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">gpi2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/gpO1" type="array">
+         <obj_property name="ElementShortName">gpO1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">gpO1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/gpO2" type="array">
+         <obj_property name="ElementShortName">gpO2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">gpO2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/PC" type="array">
+         <obj_property name="ElementShortName">PC[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/Instruction" type="array">
+         <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/MemWrite" type="logic">
+         <obj_property name="ElementShortName">MemWrite</obj_property>
+         <obj_property name="ObjectShortName">MemWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/WriteData" type="array">
+         <obj_property name="ElementShortName">WriteData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WriteData[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/DMemData" type="array">
+         <obj_property name="ElementShortName">DMemData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DMemData[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/FactData" type="array">
+         <obj_property name="ElementShortName">FactData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">FactData[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/GPIOData" type="array">
+         <obj_property name="ElementShortName">GPIOData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">GPIOData[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/ReadData" type="array">
+         <obj_property name="ElementShortName">ReadData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ReadData[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/WE1" type="logic">
+         <obj_property name="ElementShortName">WE1</obj_property>
+         <obj_property name="ObjectShortName">WE1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/WE2" type="logic">
+         <obj_property name="ElementShortName">WE2</obj_property>
+         <obj_property name="ObjectShortName">WE2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/WEM" type="logic">
+         <obj_property name="ElementShortName">WEM</obj_property>
+         <obj_property name="ObjectShortName">WEM</obj_property>
+      </wvobject>
+      <wvobject fp_name="/fpga_top_tb/DUT/system/RdSel" type="array">
+         <obj_property name="ElementShortName">RdSel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">RdSel[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
