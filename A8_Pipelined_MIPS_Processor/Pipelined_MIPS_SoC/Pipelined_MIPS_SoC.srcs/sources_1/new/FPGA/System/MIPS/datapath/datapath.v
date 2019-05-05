@@ -41,13 +41,13 @@ module datapath (
     wire [31:0] rd1_out, rd2_out;
     
     wire [31:0] hilo_mux_out;
-    wire [4:0] rf_wa_mux_out;
+    wire [4:0]  rf_wa_mux_out;
     wire [31:0] jal_wd_mux_out;
     wire [4:0]  jal_wa_mux_out;  
     
     assign pc_src = branch & zero;
-    assign ba = {sext_imm[29:0], 2'b00};
-    assign jta = {pc_plus4[31:28], instr[25:0], 2'b00};
+    assign ba     = {sext_imm[29:0], 2'b00};
+    assign jta    = {pc_plus4[31:28], instr[25:0], 2'b00};
     
     assign wd_dm = rd2_out;
     
