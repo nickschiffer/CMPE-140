@@ -128,10 +128,10 @@ module mips_pipelined(
         wire [31:0] wd_dmE;
         
         assign wd_dmE = rd2_outE;
-        assign wd_dm = wd_dmE;
+        //assign wd_dm = wd_dmE;
         
         
-        assign alu_out = alu_outE;
+        assign alu_out = alu_outM;
     
     
     /* MEMORY STAGE */
@@ -341,7 +341,7 @@ assign pc_current = pc_currentF;
         .hilo_mux_ctrlE    (hilo_mux_ctrlE),
         .dm2regE           (dm2regE),
         .we_dmE            (we_dmE),
-        .branchE           (branchE),
+        //.branchE           (branchE),
         .alu_ctrlE         (alu_ctrlE),
         .alu_srcE          (alu_srcE),
         .reg_dstE          (reg_dstE),
@@ -447,7 +447,7 @@ assign pc_current = pc_currentF;
         .we_regM        (we_regM),
         .alu_outM       (alu_outM),
 
-        .wd_dmM         (wd_dmM),
+        .wd_dmM         (wd_dm),
         .mult_hiM       (mult_hiM),
         .mult_loM       (mult_loM),
 
@@ -496,6 +496,7 @@ assign pc_current = pc_currentF;
         .jrM            (jrM),
         .waM            (waM),
         .jtaM           (jtaM),
+        .jal_wd_muxM    (jal_wd_muxM),
 
         .jr_mux_ctrlW   (jr_mux_ctrlW),
         .jumpW          (jumpW),
@@ -510,7 +511,8 @@ assign pc_current = pc_currentF;
 
         .jrW            (jrW),
         .waW            (waW),
-        .jtaW           (jtaW)
+        .jtaW           (jtaW),
+        .jal_wd_muxW     (jal_wd_muxW)
     );
     
 

@@ -9,6 +9,6 @@ module imem (
         $readmemh ("new.dat", rom);
     end
 
-    assign y = rom[a/4];
+    assign y = rom[a];
     
 endmodule

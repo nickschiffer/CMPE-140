@@ -12,7 +12,7 @@ module system(
     wire [31:0] PC;
     wire [31:0] Instruction;
     wire MemWrite;
-    wire [31:0] Address;
+    //wire [31:0] address;
     wire [31:0] WriteData;
     wire [31:0] DMemData;
     wire [31:0] FactData;
@@ -27,15 +27,16 @@ module system(
     
     
     imem iMemory(
-        .a(PC),
+        .a(PC[7:2]),
         .y(Instruction)        
     );
     
     wire [4:0] dummy5;
     wire [31:0] dummy32;
-    wire [31:0] dummy;    
+    wire [31:0] dummy;
+    wire [31:0] address;    
     
-    mips MIPS(
+    mips_pipelined MIPS(
         .clk(clk),
         .rst(reset),
         .ra3(dummy5),
@@ -45,7 +46,8 @@ module system(
         .alu_out(dummy32),
         .wd_dm(WriteData),
         .rd_dm(ReadData),
-        .rd3(dummy)
+        .rd3(dummy),
+        .address(address)
     
     );
     
@@ -54,14 +56,14 @@ module system(
     dmem dMemory(
         .clk(clk),
         .we(WEM),
-        .a(Instruction[7:2]),
+        .a(address[7:2]),
         .d(WriteData),
         .q(DMemData)
     );
     
     
     fact_top fact(
-        .A(Instruction[3:2]),
+        .A(address[3:2]),
         .WE(WE1),
         .WD(WriteData[3:0]),
         .Rst(reset),
@@ -70,7 +72,7 @@ module system(
         );
     
     gpio_top gpio(
-        .A(Instruction[3:2]),
+        .A(address[3:2]),
         .WE(WE2),
         .gpi1(gpi1),
         .gpi2(gpi2),
@@ -84,7 +86,7 @@ module system(
 
     system_AD AD(
         .WE(MemWrite),
-        .A(Instruction),
+        .A(address),
         .WEM(WEM),
         .WE1(WE1),
         .WE2(WE2),

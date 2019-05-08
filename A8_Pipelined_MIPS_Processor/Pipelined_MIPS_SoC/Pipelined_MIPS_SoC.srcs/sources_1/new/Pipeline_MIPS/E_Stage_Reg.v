@@ -28,6 +28,7 @@ module E_Stage_Reg(
     input [1:0]  hilo_mux_ctrlD,
     input        dm2regD,
     input        we_dmD,
+    
     //input        branchD,
     input [3:0]  alu_ctrlD,
     input        alu_srcD,
@@ -131,7 +132,7 @@ always @ (negedge clk, posedge rst) begin
         rd2_outE       <= rd2D;
 
         instrE_20_16   <= instrD_20_16;
-        instrE_15_11   <= instrD_20_16;
+        instrE_15_11   <= instrD_15_11;
 
         pc_plus4E      <= pc_plus4D;
 
