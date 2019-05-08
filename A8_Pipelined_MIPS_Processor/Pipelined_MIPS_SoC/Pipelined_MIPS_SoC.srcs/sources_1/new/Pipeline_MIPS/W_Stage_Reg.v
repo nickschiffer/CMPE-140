@@ -37,6 +37,7 @@ module W_Stage_Reg(
     
     input [31:0] jrM,
     input [4:0]  waM,
+    input [31:0] jtaM,
 
     output reg        jr_mux_ctrlW,
     output reg        jumpW,
@@ -52,9 +53,10 @@ module W_Stage_Reg(
     output reg [31:0] lo_outW,
 
     output reg [31:0] jrW,
-    output reg [4:0]  waW
+    output reg [4:0]  waW,
+    output reg [31:0] jtaW
     );
-always @ (posedge clk, posedge rst) begin
+always @ (negedge clk, posedge rst) begin
     if (rst) begin
         jr_mux_ctrlW   <= 0;
         jumpW          <= 0;
@@ -71,6 +73,7 @@ always @ (posedge clk, posedge rst) begin
 
         jrW            <= 0;
         waW            <= 0;
+        jtaW           <= 0;
     end
 
     else begin
@@ -89,6 +92,8 @@ always @ (posedge clk, posedge rst) begin
 
         jrW            <= jrM;
         waW            <= waM;
+        
+        jtaW           <= jtaM;
     end
 end
 endmodule

@@ -28,7 +28,7 @@ module E_Stage_Reg(
     input [1:0]  hilo_mux_ctrlD,
     input        dm2regD,
     input        we_dmD,
-    input        branchD,
+    //input        branchD,
     input [3:0]  alu_ctrlD,
     input        alu_srcD,
     input        reg_dstD,
@@ -47,6 +47,9 @@ module E_Stage_Reg(
     input [4:0]  shamtD,
     input [31:0] sext_immD,
     
+    input [31:0] addressD,
+    input [31:0] jtaD,
+    
     
     output reg        jr_mux_ctrlE,
     output reg        jumpE,
@@ -54,13 +57,14 @@ module E_Stage_Reg(
     output reg [1:0]  hilo_mux_ctrlE,
     output reg        dm2regE,
     output reg        we_dmE,
-    output reg        branchE,
+    //output reg        branchE,
     output reg [3:0]  alu_ctrlE,
     output reg        alu_srcE,
     output reg        reg_dstE,
     output reg        we_regE,
     output reg        jal_wa_muxE,
     output reg        jal_wd_muxE,
+    
     
     output reg [31:0] rd1_outE,
     output reg [31:0] rd2_outE,
@@ -71,10 +75,13 @@ module E_Stage_Reg(
     output reg [31:0] pc_plus4E,
     
     output reg [4:0]  shamtE,
-    output reg [31:0] sext_immE
+    output reg [31:0] sext_immE,
+    
+    output reg [31:0] addressE,
+    output reg [31:0] jtaE
     );
     
-always @ (posedge clk, posedge rst) begin
+always @ (negedge clk, posedge rst) begin
     if (rst) begin
         jr_mux_ctrlE   <= 0;
         jumpE          <= 0;
@@ -82,7 +89,7 @@ always @ (posedge clk, posedge rst) begin
         hilo_mux_ctrlE <= 0;
         dm2regE        <= 0;
         we_dmE         <= 0;
-        branchE        <= 0;
+        //branchE        <= 0;
         alu_ctrlE      <= 0;
         alu_srcE       <= 0;
         reg_dstE       <= 0;
@@ -100,6 +107,9 @@ always @ (posedge clk, posedge rst) begin
 
         shamtE         <= 0;
         sext_immE      <= 0;
+        
+        addressE       <= 0;
+        jtaE           <= 0;
     end
     
     else begin
@@ -109,7 +119,7 @@ always @ (posedge clk, posedge rst) begin
         hilo_mux_ctrlE <= hilo_mux_ctrlD;
         dm2regE        <= dm2regD;
         we_dmE         <= we_dmD;
-        branchE        <= branchD;
+        //branchE        <= branchD;
         alu_ctrlE      <= alu_ctrlD;
         alu_srcE       <= alu_srcD;
         reg_dstE       <= reg_dstD;
@@ -127,6 +137,9 @@ always @ (posedge clk, posedge rst) begin
 
         shamtE         <= shamtD;
         sext_immE      <= sext_immD;
+        
+        addressE       <= addressD;
+        jtaE           <= jtaD;
     end
         
 end

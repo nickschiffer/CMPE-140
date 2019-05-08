@@ -28,10 +28,10 @@ module M_Stage_Reg(
     input [1:0]  hilo_mux_ctrlE,
     input        dm2regE,
     input        we_dmE,
-    input        branchE,
+    //input        branchE,
     input        we_regE,
 
-    input        zeroE,
+    //input        zeroE,
     
     input [31:0] alu_outE,
     
@@ -40,10 +40,15 @@ module M_Stage_Reg(
     input [31:0] mult_hiE,
     input [31:0] mult_loE,
     
-    input [31:0] btaE,
+    //input [31:0] btaE,
     
     input [31:0] jrE,
     input [4:0]  waE,
+    input        jal_wa_muxE,
+    input        jal_wd_muxE,
+    
+    input [31:0] addressE,
+    input [31:0] jtaE,
 
     output reg        jr_mux_ctrlM,
     output reg        jumpM,
@@ -51,10 +56,10 @@ module M_Stage_Reg(
     output reg [1:0]  hilo_mux_ctrlM,
     output reg        dm2regM,
     output reg        we_dmM,
-    output reg        branchM,
+    //output reg        branchM,
     output reg        we_regM,
 
-    output reg        zeroM,
+    //output reg        zeroM,
 
     output reg [31:0] alu_outM,
 
@@ -63,13 +68,17 @@ module M_Stage_Reg(
     output reg [31:0] mult_hiM,
     output reg [31:0] mult_loM,
 
-    output reg [31:0] btaM,
+    //output reg [31:0] btaM,
 
     output reg [31:0] jrM,
-    output reg [4:0]  waM
+    output reg [4:0]  waM,
+    output reg        jal_wa_muxM,
+    output reg        jal_wd_muxM,
+    output reg [31:0] addressM,
+    output reg [31:0] jtaM
     );
 
-always @ (posedge clk, posedge rst) begin
+always @ (negedge clk, posedge rst) begin
     if (rst) begin
         jr_mux_ctrlM   <= 0;
         jumpM          <= 0;
@@ -77,10 +86,10 @@ always @ (posedge clk, posedge rst) begin
         hilo_mux_ctrlM <= 0;
         dm2regM        <= 0;
         we_dmM         <= 0;
-        branchM        <= 0;
+        //branchM        <= 0;
         we_regM        <= 0;
 
-        zeroM          <= 0;
+        //zeroM          <= 0;
 
         alu_outM       <= 0;
 
@@ -89,10 +98,15 @@ always @ (posedge clk, posedge rst) begin
         mult_hiM       <= 0;
         mult_loM       <= 0;
 
-        btaM           <= 0;
+        //btaM           <= 0;
 
         jrM            <= 0;
         waM            <= 0;
+        
+        jal_wa_muxM    <= 0;
+        jal_wd_muxM    <= 0;
+        addressM       <= 0;
+        jtaM           <= 0;
     end
 
     else begin
@@ -102,22 +116,27 @@ always @ (posedge clk, posedge rst) begin
         hilo_mux_ctrlM <= hilo_mux_ctrlE;
         dm2regM        <= dm2regE;
         we_dmM         <= we_dmE;
-        branchM        <= branchE;
+        //branchM        <= branchE;
         we_regM        <= we_regE;
 
-        zeroM          <= zeroE;
+        //zeroM          <= zeroE;
 
         alu_outM       <= alu_outE;
         
         wd_dmM         <= wd_dmE;
         
         mult_hiM       <= mult_hiE;
-        mult_loM       <= mult_loM;
+        mult_loM       <= mult_loE;
         
-        btaM           <= btaE;
+        //btaM           <= btaE;
         
         jrM            <= jrE;
         waM            <= waE;
+        
+        jal_wa_muxM    <= jal_wa_muxE;
+        jal_wd_muxM    <= jal_wd_muxE;
+        addressM       <= addressE;
+        jtaM           <= jtaE;
     end
 end
 endmodule

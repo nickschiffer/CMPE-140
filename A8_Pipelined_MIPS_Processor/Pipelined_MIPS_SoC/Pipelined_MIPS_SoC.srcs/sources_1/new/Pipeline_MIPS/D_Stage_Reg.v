@@ -29,7 +29,7 @@ module D_Stage_Reg(
     output reg [31:0] pc_plus4D
     );
     
-    always @ (posedge clk, posedge rst) begin
+    always @ (negedge clk, posedge rst) begin
         if (rst) begin
             instrD    <= 0;
             pc_plus4D <= 0;

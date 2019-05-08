@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Nickolas Schiffer
 // 
 // Create Date: 05/04/2019 04:26:16 PM
 // Design Name: 
@@ -30,7 +30,8 @@ module mips_pipelined(
         output wire [31:0] pc_current,
         output wire [31:0] alu_out,
         output wire [31:0] wd_dm,
-        output wire [31:0] rd3
+        output wire [31:0] rd3,
+        output wire [31:0] address
     );
     
     
@@ -43,13 +44,19 @@ module mips_pipelined(
     
     
     /* DECODE STAGE */
+        wire        pc_srcD;
         wire [31:0] instrD;
         wire [31:0] pc_plus4D;
         
-        wire [31:0] jtaD;
+        wire [31:0] btaD;
+        
+        
         
         wire [31:0] rd1D;
         wire [31:0] rd2D;
+        
+        wire [31:0] wdD;
+        wire [31:0] jtaD;
         
         /* CU */
             wire        branchD;
@@ -72,6 +79,8 @@ module mips_pipelined(
         wire [4:0]  instrD_15_11;
         
         wire [4:0]  shamtD;
+        
+        wire [31:0] addressD;
         
         
         
@@ -106,12 +115,51 @@ module mips_pipelined(
         
         wire [31:0] alu_outE;
         
+        wire [31:0] addressE;
+        
+        wire [31:0] jtaE;
+        
+        wire [31:0] jrE;
+        wire [4:0]  waE;
+        
+        wire [31:0] mult_hiE;
+        wire [31:0] mult_loE;
+        
+        wire [31:0] wd_dmE;
+        
+        assign wd_dmE = rd2_outE;
+        assign wd_dm = wd_dmE;
+        
+        
         assign alu_out = alu_outE;
     
     
     /* MEMORY STAGE */
-        wire        pc_srcM;
-        wire [31:0] btaM;  
+        //wire        pc_srcM;
+       // wire [31:0] btaM;
+       wire         jr_mux_ctrlM;
+       wire         jumpM;
+       wire         hilo_weM;
+       wire [1:0]   hilo_mux_ctrlM;
+       wire         dm2regM;
+       wire         we_dmM;
+       wire         we_regM;
+       wire [31:0]  alu_outM;
+
+       wire [31:0]  wd_dmM;
+       wire [31:0]  mult_hiM;
+       wire [31:0]  mult_loM;
+       wire [31:0]  jrM;
+       wire [4:0]   waM;
+       wire         jal_wa_muxM;
+       wire         jal_wd_muxM;
+       wire [31:0]  rd_dmM;
+       wire [31:0]  hi_outM;
+       wire [31:0]  lo_outM;
+       wire [31:0]  jtaM;
+       
+       
+       
     /* WRITEBACK STAGE */
         wire [31:0] pc_nextW;
         wire        jr_mux_ctrlW;
@@ -119,6 +167,17 @@ module mips_pipelined(
         wire [31:0] jrW;
         wire        we_regW;
         wire [4:0]  waW;
+        wire [31:0] jtaW;
+        wire        jal_wd_muxW;
+        wire [31:0] hilo_mux_outW;
+        wire [1:0]  hilo_mux_ctrlW;
+        wire        dm2regW;
+        wire [31:0] alu_outW;
+        wire [31:0] hi_outW;
+        wire [31:0] lo_outW;
+        wire [31:0] wd_rfW;
+        wire [31:0] rd_dmW;
+        
         
 assign pc_current = pc_currentF;
     
@@ -128,9 +187,9 @@ assign pc_current = pc_currentF;
     wire [31:0] pc_jump_mux;
 
     mux2 #(32) pc_src_mux (
-        .sel              (pc_srcM),
-        .a                (pc_plus4F), //TODO: double check that this shouldn't be 27:0
-        .b                (btaM),
+        .sel              (pc_srcD),
+        .a                (pc_plus4D), //TODO: double check that this shouldn't be 27:0
+        .b                (btaD),
          
         .y                (pc_pc_src_mux)
     );
@@ -138,7 +197,7 @@ assign pc_current = pc_currentF;
     mux2 #(32) jump_mux   (
         .sel              (jumpW),
         .a                (pc_pc_src_mux), 
-        .b                (jtaD),
+        .b                (jtaW),
          
         .y                (pc_jump_mux)
     );
@@ -207,7 +266,7 @@ assign pc_current = pc_currentF;
         .ra2               (instrD[20:16]),
         .ra3               (ra3),
         .wa                (waW),
-        .wd                (wdE),
+        .wd                (wdD),
         .rd1               (rd1D),
         .rd2               (rd2D),
         .rd3               () //TODO not sure if we're using this
@@ -217,12 +276,31 @@ assign pc_current = pc_currentF;
         .y                 (sext_immD)
     );
     
+    mux2 #(32) jal_wd_mux (
+        .sel               (jal_wd_muxW),
+        .a                 (hilo_mux_outW),
+        .b                 (pc_plus4D),
+        
+        .y                 (wdD)
+    );
+    
     assign shamtD = instrD[10:6];
     
     assign instrD_20_16 = instrD[20:16];
     assign instrD_15_11 = instrD[15:11];
     
-    assign jtaD = {pc_plus4F[31:28], instrD[25:0], 2'b00}; //TODO not sure about this one.
+    assign jtaD = {pc_plus4D[31:28], instrD[25:0], 2'b00}; //TODO not sure about this one.
+    
+    adder pc_plus_br      (
+        .a                ({sext_immD[29:0], 2'b00}),
+        .b                (pc_plus4D),
+        
+        .y                (btaD)
+    );
+    
+    assign pc_srcD  = ((rd1D == rd2D) && branchD) ? 1 : 0;
+    
+    assign addressD = instrD;
     
     /* E Stage Reg Interface */
     E_Stage_Reg E_Stage_Reg (
@@ -234,7 +312,7 @@ assign pc_current = pc_currentF;
         .hilo_mux_ctrlD    (hilo_mux_ctrlD),
         .dm2regD           (dm2regD),
         .we_dmD            (we_dmD),
-        .branchD           (branchD),
+        //.branchD           (branchD),
         .alu_ctrlD         (alu_ctrlD),
         .alu_srcD          (alu_srcD),
         .reg_dstD          (reg_dstD),
@@ -252,6 +330,9 @@ assign pc_current = pc_currentF;
         
         .shamtD            (shamtD),
         .sext_immD         (sext_immD),
+        
+        .addressD          (addressD),
+        .jtaD              (jtaD),
         
         
         .jr_mux_ctrlE      (jr_mux_ctrlE),
@@ -277,7 +358,11 @@ assign pc_current = pc_currentF;
         .pc_plus4E         (pc_plus4E),
         
         .shamtE            (shamtE),
-        .sext_immE         (sext_immE)
+        .sext_immE         (sext_immE),
+        
+        .addressE          (addressE),
+        .jtaE              (jtaE)
+       
     );
 
 /* EXECUTE STAGE */
@@ -285,6 +370,8 @@ assign pc_current = pc_currentF;
     wire [31:0] alu_paE;
     wire [31:0] alu_pbE;
     wire        zeroE;
+    
+    wire [4:0]  rf_wa;
     
     assign alu_paE = rd1_outE;
     
@@ -298,43 +385,153 @@ assign pc_current = pc_currentF;
         .op             (alu_ctrlE),
         .a              (alu_paE),
         .b              (alu_pbE),
-        .zero           (zeroE),
+        //.zero           (zeroE),
         .y              (alu_outE),
         .shamt          (shamtE)
     );
     
-    mux2 #(5)  rf_wa_mux  (
+    mux2 #(5)  rf_wa_mux  ( //TODO move to D
         .sel            (reg_dstE),
         .a              (instrE_20_16),
-        .b              (),
-        .y              ()
+        .b              (instrE_15_11),
+        .y              (rf_wa)
     );
-    mux2 #(32) jal_wd_mux ();
-    mux2 #(5)  jal_wa_mux ();
     
-    mult_inf #(32) mult   ();
-    adder pc_plus_br      ();
+    mux2 #(5)  jal_wa_mux (
+        .sel            (jal_wa_muxE),
+        .a              (rf_wa),
+        .b              (5'd31),
+        
+        .y              (waE)
+        
+    ); 
+    
+    mult_inf #(32) mult   (
+        .a              (rd1_outE),
+        .b              (rd2_outE),
+        
+        .out            ({mult_hiE, mult_loE})
+    );
+    
     
     /* M Stage Interface */
-    M_Stage_Reg M_Stage_Reg ();
+    M_Stage_Reg M_Stage_Reg (
+        .clk            (clk),
+        .rst            (rst),
+        .jr_mux_ctrlE   (jr_mux_ctrlE),
+        .jumpE          (jumpE),
+        .hilo_weE       (hilo_weE),
+        .hilo_mux_ctrlE (hilo_mux_ctrlE),
+        .dm2regE        (dm2regE),
+        .we_dmE         (we_dmE),
+        .we_regE        (we_regE),    
+        .alu_outE       (alu_outE),
+    
+    .wd_dmE         (wd_dmE),
+        .mult_hiE       (mult_hiE),
+        .mult_loE       (mult_loE),
+    
+        .jrE            (jrE),
+        .waE            (waE),
+        .jal_wa_muxE    (jal_wa_muxE),
+        .jal_wd_muxE    (jal_wd_muxE),
+        .addressE       (addressE),
+        .jtaE           (jtaE),
+
+        .jr_mux_ctrlM   (jr_mux_ctrlM),
+        .jumpM          (jumpM),
+        .hilo_weM       (hilo_weM),
+        .hilo_mux_ctrlM (hilo_mux_ctrlM),
+        .dm2regM        (dm2regM),
+        .we_dmM         (we_dmM),
+        .we_regM        (we_regM),
+        .alu_outM       (alu_outM),
+
+        .wd_dmM         (wd_dmM),
+        .mult_hiM       (mult_hiM),
+        .mult_loM       (mult_loM),
+
+
+        .jrM            (jrM),
+        .waM            (waM),
+        .jal_wa_muxM    (jal_wa_muxM),
+        .jal_wd_muxM    (jal_wd_muxM),
+        .addressM       (address),
+        .jtaM           (jtaM)
+    );
 
 /* MEMORY STAGE */
 
-    
+    assign alu_out = alu_outM;
+    assign wd_dm   = wd_dmM;
+    assign we_dm   = we_dmM;
+    assign rd_dmM  = rd_dm;
     //inferred and gate
     //connections to data mem
-    HiLo_reg #(32) hi_lo_reg ();
+    HiLo_reg #(32) hi_lo_reg (
+        .clk            (clk),
+        .rst            (rst),
+        .we             (hilo_weM),
+        .hi             (mult_hiM),
+        .lo             (mult_loM),
+        
+        .hi_out         (hi_outM),
+        .lo_out         (lo_outM)
+    );
     
     /* W Stage Reg Interface */
-    W_Stage_Reg W_Stage_Reg ();
+    W_Stage_Reg W_Stage_Reg (
+        .clk            (clk),
+        .rst            (rst),
+        .jr_mux_ctrlM   (jr_mux_ctrlM),
+        .jumpM          (jumpM),
+        .hilo_mux_ctrlM (hilo_mux_ctrlM),
+        .dm2regM        (dm2regM),
+        .we_regM        (we_regM),
+        .alu_outM       (alu_outM),
+        .rd_dmM         (rd_dmM),
+
+        .hi_outM        (hi_outM),
+        .lo_outM        (lo_outM),
+        .jrM            (jrM),
+        .waM            (waM),
+        .jtaM           (jtaM),
+
+        .jr_mux_ctrlW   (jr_mux_ctrlW),
+        .jumpW          (jumpW),
+        .hilo_mux_ctrlW (hilo_mux_ctrlW),
+        .dm2regW        (dm2regW),
+        .we_regW        (we_regW),
+
+        .alu_outW       (alu_outW),
+        .rd_dmW         (rd_dmW),
+        .hi_outW        (hi_outW),
+        .lo_outW        (lo_outW),
+
+        .jrW            (jrW),
+        .waW            (waW),
+        .jtaW           (jtaW)
+    );
     
 
 /* WRITEBACK STAGE */
-
-
     
-    mux2 #(32) rf_wd_mux ();
-    mux4 #(32) hilo_mux  ();
+    mux2 #(32) rf_wd_mux (
+        .sel            (dm2regW),
+        .a              (alu_outW),
+        .b              (rd_dmW),
+        
+        .y              (wd_rfW)
+    );
+    mux4 #(32) hilo_mux  (
+        .sel            (hilo_mux_ctrlW),
+        .a              (wd_rfW),
+        .b              (lo_outW),
+        .c              (hi_outW),
+        .d              (32'd0),
+        
+        .y              (hilo_mux_outW)
+    );
     
         
 endmodule
