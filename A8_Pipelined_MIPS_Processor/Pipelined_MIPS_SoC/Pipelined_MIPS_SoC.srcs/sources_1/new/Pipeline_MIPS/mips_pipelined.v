@@ -427,7 +427,7 @@ assign pc_current = pc_currentF;
         .we_regE        (we_regE),    
         .alu_outE       (alu_outE),
     
-    .wd_dmE         (wd_dmE),
+        .wd_dmE         (wd_dmE),
         .mult_hiE       (mult_hiE),
         .mult_loE       (mult_loE),
     
